@@ -5,33 +5,17 @@
  */
 package view;
 
-import java.awt.Frame;
-import java.util.ArrayList;
-import model.Empresa;
-import model.Pessoa;
-import model.VisitaAgendada;
+import java.awt.Dialog;
 
 /**
  *
  * @author aluno
  */
 public class FrameInicio extends javax.swing.JFrame {
-      ArrayList<Pessoa> vetPessoa = new ArrayList();
-      ArrayList<VisitaAgendada> vetVisita = new ArrayList();
-      ArrayList<Empresa> vetEmpresa = new ArrayList();
       
     public FrameInicio() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        Pessoa pessoa1 = new Pessoa("leonardo","leonardo@email.com.br","123456789","11987651234","funcionario","23","1","101","1212");
-        vetPessoa.add(pessoa1);
-        
-        VisitaAgendada visita1 = new VisitaAgendada("Empresa de Ar Condicionado","12345678","teste@teste.com.br","1123421234","1","101","1212");
-        vetVisita.add(visita1);
-        
-        Empresa empresa1 = new Empresa("eguru","1234","felipe","1111111111","0800","1800","1","101");
-        vetEmpresa.add(empresa1);
-        
+        this.setLocationRelativeTo(null);       
         
     }
 
@@ -111,21 +95,21 @@ public class FrameInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPessoaActionPerformed
-        DialogPessoa dialog = new DialogPessoa(new javax.swing.JFrame(), true);
-        dialog.setVisible(true);
-        //btPessoa.setEnabled(false);
+        Dialog dialogPessoa = new DialogPessoa(new javax.swing.JFrame(), true);
+        dialogPessoa.setVisible(true);
+        
     }//GEN-LAST:event_btPessoaActionPerformed
 
     private void btVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisitaActionPerformed
-        Frame frameVisita = new FrameVisita(vetVisita);
-        frameVisita.setVisible(true);
-        //btVisita.setEnabled(false);
+        Dialog dialogVisita = new DialogVisita(new javax.swing.JFrame(), true);
+        dialogVisita.setVisible(true);
+        
     }//GEN-LAST:event_btVisitaActionPerformed
 
     private void btEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmpresaActionPerformed
-        Frame frameEmpresa = new FrameEmpresa(vetEmpresa);
-        frameEmpresa.setVisible(true);
-        //btEmpresa.setEnabled(false);
+        Dialog dialogVIsita = new DialogEmpresa(new javax.swing.JFrame(), true);
+        dialogVIsita.setVisible(true);
+        
     }//GEN-LAST:event_btEmpresaActionPerformed
 
     /**

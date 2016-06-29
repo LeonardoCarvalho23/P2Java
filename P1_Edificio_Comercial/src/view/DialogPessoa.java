@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ControleCartao;
 import controller.ControlePessoa;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -368,14 +369,14 @@ public class DialogPessoa extends javax.swing.JDialog {
             try {
                 cadastrarPessoa();
             } catch (SQLException | ClassNotFoundException ex) {
-                Logger.getLogger(FramePessoa.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DialogPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else if(rbCrudPessoaBuscar.isSelected()){
             try {
                 buscarPessoa();
             } catch (SQLException | ClassNotFoundException ex) {
-                Logger.getLogger(FramePessoa.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DialogPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else if(rbCrudPessoaAlterar.isSelected() && btOk.getText().equals("Buscar")){
@@ -413,9 +414,7 @@ public class DialogPessoa extends javax.swing.JDialog {
                                         limparCampos();
                                     }
                            }
-            } catch (SQLException ex) {
-                Logger.getLogger(DialogPessoa.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(DialogPessoa.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -473,6 +472,13 @@ public class DialogPessoa extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void buscarCartoes() throws SQLException, ClassNotFoundException{
+        ControleCartao controleCartao = new ControleCartao();
+        
+        ResultSet rs;
+        rs = controleCartao.buscarCartoes();
     }
     
       private void liberarCampos(){
@@ -607,9 +613,8 @@ public class DialogPessoa extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Selecione o Tipo de Pessoa (Funcionario/Visitante)");
         }
     }
-    private void excluirPessoa(String cpf){
+    private void excluirPessoa(String cpf) throws ClassNotFoundException, SQLException{
         ControlePessoa controlePessoa = new ControlePessoa();
-        
         controlePessoa.ExcluirPessoa(cpf);
     }
 
